@@ -15,7 +15,7 @@ describe("TestingAPICalls component", () => {
 
     expect(mockFetch).toHaveBeenCalled();
 
-    waitFor(() => {
+    await waitFor(() => {
       expect(screen.getByText(/kunal/i)).toBeInTheDocument();
     });
   });

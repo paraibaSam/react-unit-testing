@@ -1,5 +1,5 @@
-/* eslint-disable testing-library/no-wait-for-side-effects */
-import { render, screen, waitFor } from "@testing-library/react";
+/* eslint-disable-next-line no-unused-vars */
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import TestingStateChange from "../components/TestingStateChange";
 
@@ -13,9 +13,7 @@ describe("TestingStateChange Component", () => {
   test("Testing state change on button click", async () => {
     render(<TestingStateChange />);
 
-    await waitFor(() => {
-      userEvent.click(screen.getByText(/toggle text/i));
-    });
+    await userEvent.click(screen.getByText(/toggle text/i));
 
     expect(screen.getByText(/text visible/i)).toBeInTheDocument();
   });
@@ -23,9 +21,7 @@ describe("TestingStateChange Component", () => {
   test("Testing disabled on button click", async () => {
     render(<TestingStateChange />);
 
-    await waitFor(() => {
-      userEvent.click(screen.getByText(/toggle button disabled/i));
-    });
+    await userEvent.click(screen.getByText(/toggle button disabled/i));
 
     expect(screen.getByText(/toggle text/i)).toBeDisabled();
   });
@@ -35,9 +31,7 @@ describe("TestingStateChange Component", () => {
 
     expect(screen.getAllByTestId('record').length).toBe(3);
 
-    await waitFor(() => {
-      userEvent.click(screen.getByText(/add to list/i));
-    });
+    await userEvent.click(screen.getByText(/add to list/i));
 
     expect(screen.getAllByTestId('record').length).toBe(4);
   });
@@ -47,9 +41,7 @@ describe("TestingStateChange Component", () => {
 
     expect(screen.getAllByTestId('record').length).toBe(3);
 
-    await waitFor(() => {
-      userEvent.click(screen.getByText(/remove from list/i));
-    });
+    await userEvent.click(screen.getByText(/remove from list/i));
 
     expect(screen.getAllByTestId('record').length).toBe(2);
   });
